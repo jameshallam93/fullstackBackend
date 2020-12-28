@@ -1,0 +1,27 @@
+{
+  "name": "fullstackbackend",
+  "version": "1.0.0",
+  "description": "na",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jameshallam93/fullstackBackend.git"
+  },
+  "author": "James H",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jameshallam93/fullstackBackend/issues"
+  },
+  "homepage": "https://github.com/jameshallam93/fullstackBackend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.6"
+  }
+}
