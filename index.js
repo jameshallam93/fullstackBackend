@@ -1,6 +1,8 @@
 const { json } = require("express")
 const express = require("express")
 const bodyParser = require("body-parser")
+const cors = require("cors")
+
 
 var morgan = require("morgan")
  
@@ -9,6 +11,8 @@ var morgan = require("morgan")
 const app = express()
 
 app.use(bodyParser.json())
+app.use(express.static("build"))
+app.use(cors())
 
 morgan.token("body", function(req, res){
     const toReturn = req.body
@@ -17,7 +21,7 @@ morgan.token("body", function(req, res){
 
 app.use(morgan(":method :url :status :body"))
 
-const baseUrl = "http://localhost:3001/persons"
+
 
 
 const generateId = () =>{
@@ -117,6 +121,8 @@ app.post("/api/persons", (request, response) =>{
     response.json(person).status(200).end()
 })
 
-const PORT  = 3001
-app.listen(PORT)
+const PORT  = process.env.PORT || 3000
+app.listen(PORT => {
+    console.log(`server running on port number ${PORT}`)
+})
 console.log(`Server running on port ${PORT}`)
