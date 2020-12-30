@@ -121,7 +121,7 @@ app.post("/api/persons", (request, response) =>{
     response.json(person).status(200).end()
 })
 
-var port  = process.env.PORT || 3001
-app.listen(port => {
-    console.log(`server running on port number ${port}`)
+const PORT = process.env.PORT || 3001
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
 })
