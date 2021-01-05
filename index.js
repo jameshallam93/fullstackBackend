@@ -1,4 +1,6 @@
-const { json } = require("express")
+//unused currently
+//const { json } = require("express")
+
 const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
@@ -16,6 +18,7 @@ app.use(express.static("build"))
 app.use(cors())
 
 morgan.token("body", function(req, res){
+    console.log(res.body)
     const toReturn = req.body
     return JSON.stringify(toReturn)
 })
@@ -50,12 +53,13 @@ app.get("/api/persons/:id", (request, response) =>{
 
 app.delete("/api/persons/:id",(request, response, next) =>{
     Person.findByIdAndDelete(request.params.id)
-    .then(result =>{
-        console.log(`Person with id: ${request.params.id} has been deleted`);
+        .then(result =>{
+            console.log(`Person with id: ${request.params.id} has been deleted`)
+            console.log(result.body)
         
-        response.status(204).end()
-    })
-    .catch(error => next(error))
+            response.status(204).end()
+        })
+        .catch(error => next(error))
 
 })
 
@@ -66,10 +70,10 @@ app.put("/api/persons/:id", (request, response, next) =>{
         number:body.number
     }
     Person.findByIdAndUpdate(request.params.id, updatedPerson, {new:true})
-    .then(result =>{
-        response.send(result)
-    })
-    .catch(error => next(error))
+        .then(result =>{
+            response.send(result)
+        })
+        .catch(error => next(error))
 })
 
 app.post("/api/persons", (request, response, next) =>{
@@ -83,9 +87,9 @@ app.post("/api/persons", (request, response, next) =>{
         console.log(`${body.name} saved successfully`)
         response.json(returnedPerson)
     })
-    .catch(error =>{
-        next(error)
-    })
+        .catch(error =>{
+            next(error)
+        })
 })
 
 const errorHandler = (error, request, response, next) =>{
@@ -103,5 +107,5 @@ app.use(errorHandler)
 
 const PORT = process.env.PORT 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+    console.log(`Server running on port ${PORT}`)
 })

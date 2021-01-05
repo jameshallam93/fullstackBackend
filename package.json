@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "lint":"npx eslint"
   },
   "repository": {
     "type": "git",
@@ -28,5 +29,10 @@
     "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6"
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-plugin-react": "^7.22.0",
+    "lint": "^0.7.0"
   }
 }

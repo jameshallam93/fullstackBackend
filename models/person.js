@@ -4,15 +4,15 @@ require("dotenv").config()
 
 const url = process.env.MONGODB_URL
 
-console.log(`Connecting to ${url}`);
+console.log(`Connecting to ${url}`)
 
 mongoose.connect(url, {useNewUrlParser:true, useFindAndModify:false, useUnifiedTopology:true, useCreateIndex:true})
-.then(response =>{
-    console.log(`Successfully connected to ${url}`)    
-})
-.catch(error =>{
-    console.log(`Error connecting to ${url}: ${error.message}`);
-})
+    .then(response =>{
+        console.log(`Successfully connected to ${url}`)    
+    })
+    .catch(error =>{
+        console.log(`Error connecting to ${url}: ${error.message}`)
+    })
 
 const personSchema = new mongoose.Schema({
     name:{type:String,
